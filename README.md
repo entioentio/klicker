@@ -1,74 +1,46 @@
-# SolidStart
+# klicker
 
-![solid (3)](https://user-images.githubusercontent.com/43764894/199539679-a1b9fbcb-3ec5-4fd7-b2d9-5cc25b248295.png)
+This template should help get you started developing with Vue 3 in Vite.
 
+## Recommended IDE Setup
 
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-A Solid Quickstart template that will get you started with everything you need to build a Solid project, powered by [`solid-start`](https://github.com/ryansolid/solid-start/tree/master/packages/solid-start);
+## Type Support for `.vue` Imports in TS
 
-Click the below button to quickly create a new repo, create a new Netlify project, and deploy!
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/solid-quickstart?utm_campaign=template-team&utm_source=dtn-button&utm_medium=dtn-button&utm_term=solid-qt-dtn-button&utm_content=solid-qt-dtn-button)
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-## Table of Contents
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Building](#building)
-- [Deploying using the Netlify CLI](#deploying-using-the-netlify-cli)
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-## Project Structure
+## Customize configuration
 
-Inside of your Solidjs project, you'll see the following folders and files:
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-```
-/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Counter.css
-│   │   └── Counter.tsx
-│   └── routes/
-│       └── [...404].tsx
-│       └── index.tsx
-├── entry-client.tsx
-├── entry-server.tsx
-├── root.css
-├── root.tsx
-├── package.json
-└── vite.config.json
-```
+## Project Setup
 
-## Getting Started
-
-If you want to get started locally, you can clone the project, install the dependencies and run the dev command!
-
-```
-git clone https://github.com/netlify-templates/solid-quickstart.git
-cd solid-quickstart
+```sh
 npm install
-npm run dev
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Compile and Hot-Reload for Development
 
-Solid apps are built with _adapters_, which optimise your project for deployment to different environments.
+```sh
+npm run dev
+```
 
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different adapter, add it to the `devDependencies` in `package.json` and specify in your `vite.config.js`.
+### Type-Check, Compile and Minify for Production
 
-## Deploying using the Netlify CLI
-- Install the Netlify CLI globally `npm install netlify-cli -g`
-    
-- Run `npm run build`
+```sh
+npm run build
+```
 
-- Then use the `netlify deploy` for a deploy preview link or `netlify deploy --prod` to deploy to production
+### Lint with [ESLint](https://eslint.org/)
 
-Here are a few other ways you can deploy this template:
-    
-- Use the Netlify CLI's create from template command `netlify sites:create-template solid-quickstart` which will create a repo, Netlify project, and deploy it
-    
-- If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
-
-Hope this template helps :) Happy coding 👩🏻‍💻!
+```sh
+npm run lint
+```
