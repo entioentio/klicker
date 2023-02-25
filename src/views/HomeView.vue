@@ -5,6 +5,7 @@ import { collection } from "firebase/firestore";
 
 const groups = useCollection(collection(db, "group"));
 const matches = useCollection(collection(db, "match"));
+alert(JSON.stringify(matches));
 </script>
 
 <template>
