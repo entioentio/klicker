@@ -4,6 +4,7 @@ import { useCollection } from "vuefire";
 import { collection } from "firebase/firestore";
 
 const groups = useCollection(collection(db, "group"));
+const matches = useCollection(collection(db, "match"));
 </script>
 
 <template>
@@ -17,9 +18,10 @@ const groups = useCollection(collection(db, "group"));
           </h3>
         </div>
         <div class="border-t border-gray-200">
-          <dl>
+ 	{{ matches.length }}
+	{{ groups.length }}        
+	<dl>
             <!--bg-white-->
-			{{ groups.length }}
             <div
               v-for="(group, index) in groups"
               :key="group.name"
