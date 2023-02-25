@@ -5,7 +5,9 @@ import { collection } from "firebase/firestore";
 
 const groups = useCollection(collection(db, "group"));
 const matches = useCollection(collection(db, "match"));
+setInterval(()=>{
 alert(JSON.stringify(matches));
+}, 3000);
 </script>
 
 <template>
