@@ -20,7 +20,6 @@ alert(JSON.stringify(groups));
           </h3>
         </div>
         <div class="border-t border-gray-200">
- 	{{ matches.length }}
 	{{ groups.length }}        
 	<dl>
             <!--bg-white-->
