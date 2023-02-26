@@ -4,9 +4,8 @@ import { useCollection } from "vuefire";
 import { collection } from "firebase/firestore";
 
 const groups = useCollection(collection(db, "group"));
-const matches = useCollection(collection(db, "match"));
 setInterval(()=>{
-alert(JSON.stringify(matches));
+alert(JSON.stringify(groups));
 }, 3000);
 </script>
 
