@@ -4,9 +4,6 @@ import { useCollection } from "vuefire";
 import { collection } from "firebase/firestore";
 
 const groups = useCollection(collection(db, "group"));
-setInterval(()=>{
-alert(JSON.stringify(groups));
-}, 3000);
 </script>
 
 <template>
@@ -20,7 +17,6 @@ alert(JSON.stringify(groups));
           </h3>
         </div>
         <div class="border-t border-gray-200">
-	{{ groups.length }}        
 	<dl>
             <!--bg-white-->
             <div
