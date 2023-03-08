@@ -52,8 +52,23 @@ const { playersRanking } = useRanking(props.leagueName);
 		</table>
 	</div>
 	<div class="rounded-lg border-4 border-dashed border-gray-200 px-4">
-		<h3 class="py-2 text-left font-medium text-gray-900">Ranking</h3>
 		<table class="w-full">
+			<thead class="px-4 py-5">
+			<tr>
+				<th>
+					<h3 class="py-2 text-left font-medium text-gray-900">Ranking</h3>
+				</th>
+				<th />
+				<th>
+					<h6 class="py-2 text-left font-medium text-xs
+					 text-gray-600">Rank</h6>
+				</th>
+				<th>
+					<h6 class="py-2 text-left font-medium text-xs
+					 text-gray-600 text-center">Wins / Loses</h6>
+				</th>
+			</tr>
+		</thead>
 			<tbody
 				class="border-t border-gray-200 text-gray-700 text-md divide-y divide-gray-200"
 			>
