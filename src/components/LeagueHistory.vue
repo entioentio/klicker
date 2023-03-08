@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import { computed } from 'vue';
-import { db } from '@/firebase';
-import { useCollection } from 'vuefire';
-import { collection } from 'firebase/firestore';
+import useLeague from '@/composables/useLeague';
 
 const props = defineProps({
 	leagueName: {
@@ -12,24 +9,7 @@ const props = defineProps({
 	},
 });
 
-const matches = useCollection(collection(db, 'match'));
-const groupMatches = computed(() => {
-	return matches.value
-		.filter((m) => m.group === props.leagueName)
-		.sort((a, b) => a.data.seconds - b.data.seconds)
-		.map((m) => {
-			const date = new Date(m.data.seconds * 1000);
-
-			return {
-				...m,
-				date: date.toLocaleDateString([], { year: '2-digit', month: 'short' }),
-				time: date.toLocaleTimeString([], {
-					hour: '2-digit',
-					minute: '2-digit',
-				}),
-			};
-		});
-});
+const { matchesTable } = useLeague(props.leagueName);
 </script>
 
 <template>
@@ -53,18 +33,22 @@ const groupMatches = computed(() => {
 		</thead>
 		<tbody class="border-t border-gray-200 divide-y divide-gray-200">
 			<tr
-				v-for="(match, index) in groupMatches"
+				v-for="(match, index) in matchesTable"
 				:key="match.seconds"
 				:class="{ ['bg-gray-100']: index % 2 === 0 }"
 			>
-				<td class="px-2 py-5 text-sm font-medium text-gray-500">
-					{{ match.winners.join(' & ') }}
+				<td
+					class="px-2 py-5 text-sm font-medium text-gray-700 whitespace-pre-wrap"
+				>
+					{{ match.winners.join('\r\n') }}
 				</td>
-				<td class="py-5 text-sm font-medium text-gray-500">vs.</td>
-				<td class="px-2 py-5 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-					{{ match.losers.join(' & ') }}
+				<td class="px-2 py-5 mt-1 text-sm text-gray-500 sm:col-span-2 sm:mt-0">
+					vs.
 				</td>
-				<td class="px-2 py-5 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+				<td class="py-5 text-sm font-medium text-gray-700 whitespace-pre-wrap">
+					{{ match.losers.join('\r\n') }}
+				</td>
+				<td class="px-2 py-5 mt-1 text-xs text-gray-500 sm:col-span-2 sm:mt-0">
 					{{ match.time }}<br />
 					{{ match.date }}
 				</td>

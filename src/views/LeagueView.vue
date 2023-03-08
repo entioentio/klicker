@@ -19,26 +19,28 @@ const groupMatches = computed(() => {
 </script>
 
 <template>
-	<header>
-		<div class="bg-white shadow">
+	<header class="sticky top-0">
+		<div class="bg-white shadow z-10 relative">
 			<div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-				<h1 class="text-3xl font-bold tracking-tight text-gray-900">
-					League: {{ leagueName }}
+				<h1 class="text-2xl tracking-tight text-gray-900">
+					League:<p class="font-bold text-3xl">{{ leagueName }}</p>
 				</h1>
 			</div>
 		</div>
-		<div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 bg-gray-100">
 			<div class="flex h-4 items-center justify-between">
 				<div class="flex items-center">
 					<div class="flex items-baseline space-x-2">
 						<RouterLink
-							to="/"
-							class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+							:to="{ name: 'leagueOverview' }"
+							class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+							exact-active-class="bg-white shadow-sm ring-1 ring-inset ring-gray-300"
 							>Overview</RouterLink
 						>
 						<RouterLink
 							:to="{ name: 'leagueHistory' }"
 							class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+							exact-active-class="bg-white shadow-sm ring-1 ring-inset ring-gray-300"
 							>History</RouterLink
 						>
 					</div>
@@ -46,13 +48,11 @@ const groupMatches = computed(() => {
 			</div>
 		</div>
 	</header>
-	<main>
-		<div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+	<main class="pb-20">
+		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 			<!-- Replace with your content -->
 			<div class="px-4 py-6 sm:px-0">
-				<div class="rounded-lg border-4 border-dashed border-gray-200 px-4">
-					<RouterView />
-				</div>
+				<RouterView />
 			</div>
 			<!-- /End replace -->
 		</div>
