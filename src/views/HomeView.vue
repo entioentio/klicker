@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { db } from '@/firebase';
-import { useCollection } from 'vuefire';
-import { collection } from 'firebase/firestore';
+import useFirestoreCollection from '@/composables/useFirestoreCollection';
 
-const groups = useCollection(collection(db, 'group'));
+const { groupCollection } = useFirestoreCollection();
 </script>
 
 <template>
@@ -26,7 +24,7 @@ const groups = useCollection(collection(db, 'group'));
 									leagueName: group.name,
 								},
 							}"
-							v-for="(group, index) in groups"
+							v-for="(group, index) in groupCollection"
 							:key="group.name"
 							class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 block"
 							:class="{ ['bg-gray-100']: index % 2 === 0 }"

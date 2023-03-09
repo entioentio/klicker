@@ -1,20 +1,11 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import { computed } from 'vue';
-import { db } from '@/firebase';
-import { useCollection } from 'vuefire';
-import { collection } from 'firebase/firestore';
 
-const props = defineProps({
+defineProps({
 	leagueName: {
 		type: String as PropType<string>,
 		required: true,
 	},
-});
-
-const matches = useCollection(collection(db, 'match'));
-const groupMatches = computed(() => {
-	return matches.value.filter((m) => m.group === props.leagueName);
 });
 </script>
 

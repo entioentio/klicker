@@ -1,13 +1,11 @@
-import { db } from '@/firebase';
-import { useCollection } from 'vuefire';
-import { collection } from 'firebase/firestore';
 import { computed } from 'vue';
+import useFirestoreCollection from '@/composables/useFirestoreCollection';
 
 export default (leagueName: string) => {
-	const matchesCollection = useCollection(collection(db, 'match'));
+	const { matchCollection } = useFirestoreCollection();
 
 	const matches = computed(() => {
-		return matchesCollection.value.filter((m) => m.group === leagueName);
+		return matchCollection.value.filter((m) => m.group === leagueName);
 	});
 
 	const activePlayers = computed(() =>
